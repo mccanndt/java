@@ -14,7 +14,8 @@ public class TipCalculatorApp {
 		
 		while(choice.equalsIgnoreCase("y")) {
 			// Number Formatting
-			NumberFormat currency = NumberFormat.getCurrencyInstance();
+			NumberFormat cf = NumberFormat.getCurrencyInstance();
+			NumberFormat pf = NumberFormat.getPercentInstance();
 			
 			// User input
 			System.out.print("Cost of meal: ");
@@ -22,32 +23,17 @@ public class TipCalculatorApp {
 			System.out.println();
 			
 			// Display and Math
-			// 15%
-			BigDecimal percent = new BigDecimal("0.15");
-			BigDecimal tip = cost.multiply(percent);
-			BigDecimal total = cost.add(tip);
-			System.out.println("15%");
-			System.out.println("Tip amount:   " + currency.format(tip));
-			System.out.println("Total amount: " + currency.format(total));
-			System.out.println();
-			
-			// 20%
-			percent = new BigDecimal("0.20");
-			tip = cost.multiply(percent);
-			total = cost.add(tip);
-			System.out.println("20%");
-			System.out.println("Tip amount:   " + currency.format(tip));
-			System.out.println("Total amount: " + currency.format(total));
-			System.out.println();
-			
-			// 25%
-			percent = new BigDecimal("0.25");
-			tip = cost.multiply(percent);
-			total = cost.add(tip);
-			System.out.println("25%");
-			System.out.println("Tip amount:   " + currency.format(tip));
-			System.out.println("Total amount: " + currency.format(total));
-			System.out.println();
+			for (int i = 15; i <= 25; i += 5) {
+				double rate = i / 100.0;
+				
+				BigDecimal percent = new BigDecimal(rate);
+				BigDecimal tip = cost.multiply(percent);
+				BigDecimal total = cost.add(tip);
+				System.out.println(pf.format(percent));
+				System.out.println("Tip amount:   " + cf.format(tip));
+				System.out.println("Total amount: " + cf.format(total));
+				System.out.println();
+			}
 			
 			System.out.print("Continue? (y/n): ");
 			choice = sc.next();
