@@ -12,13 +12,13 @@ public class TableOfPowersApp {
 		while (choice.equalsIgnoreCase("y")) {
 			// Get user input
 			System.out.print("Enter an integer: ");
-			int integer = sc.nextInt();
+			int input = sc.nextInt();
 
 			// Display results and math
 			System.out.println("Number\tSquared\tCubed");
 			System.out.println("======\t=======\t=====");
 
-			for (int i = 1; i <= integer; i++) {
+			for (int i = 1; i <= input; i++) {
 				// Math
 				int square = i * i;
 				int cube = i * i * i;
