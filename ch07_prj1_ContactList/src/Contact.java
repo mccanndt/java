@@ -60,7 +60,7 @@ public class Contact {
 				+ ", email=" + email + ", phone=" + phone + "]";
 	}
 
-	public String displayContact() {
+	public void displayContact() {
 		String s = "\n";
 		s += "--------------------------------------------\n";
 		s += "---- Current Contact -----------------------\n";
@@ -70,7 +70,7 @@ public class Contact {
 		s += "Phone Number: " + phone + "\n";
 		s += "--------------------------------------------\n";
 		
-		return s;
+		System.out.println(s);
 	}
 	
 }

@@ -2,26 +2,22 @@
 public class GuessingGameApp {
 
 	public static void main(String[] args) {
-		final int LIMIT = 100;
-		Game.welcomeMessage(LIMIT);
+		
+		Game.welcomeMessage();
 		
 		// Start try again loop
 		String choice = "y";
 		while (choice.equalsIgnoreCase("y")) {
-			// Get random number
-			int number = Game.getRandomInt(LIMIT);
+			Game g = new Game();
 			// Start guessing loop
-			int numberOfGuesses = 0;
 			while (true) {
-				int guess = Console.getInt("\nEnter number: ", 1, LIMIT);
-				numberOfGuesses += 1;
-				if (Game.isCorrectGuess(number, guess, numberOfGuesses)) {
+				int guess = Console.getInt("\nEnter number: ", 1, Game.LIMIT);
+				
+				if (g.isCorrectGuess(guess)) {
 					break;
 				}
 			}
 			choice = Console.getString("Try again? (y/n): ", "y", "n");
 		}
 	}
-
-	
 }

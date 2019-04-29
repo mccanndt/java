@@ -14,7 +14,7 @@ public class ContactListApp {
 			
 			Contact contact = new Contact(firstName, lastName, email, phone);
 			
-			System.out.println(contact.displayContact());
+			contact.displayContact();
 			// Loop?
 			choice = Console.getString("\nContinue? (y/n): ");
 		}

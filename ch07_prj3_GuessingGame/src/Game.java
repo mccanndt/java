@@ -1,18 +1,29 @@
 
 public class Game {
-	public static void welcomeMessage(int limit) {
+	private int number;
+	private int numberOfGuesses;
+
+	final static int LIMIT = 100;
+	
+	public Game() {
+		number = getRandomInt();
+		numberOfGuesses = 0;
+	}
+
+	public static void welcomeMessage() {
 		System.out.println("Welcome to the Guess the Number Game");
 		System.out.println("++++++++++++++++++++++++++++++++++++\n");
-		System.out.println("I'm thinking of a number from 1 to " + limit);
+		System.out.println("I'm thinking of a number from 1 to " + LIMIT);
 		System.out.println("Try to guess it.");
 	}
 
-	public static int getRandomInt(int limit) {
-		int randomInt = (int) (Math.random() * limit) + 1;
+	public int getRandomInt() {
+		int randomInt = (int) (Math.random() * LIMIT) + 1;
 		return randomInt;
 	}
 	
-	public static boolean isCorrectGuess(int number, int guess, int numberOfGuesses) {
+	public boolean isCorrectGuess(int guess) {
+		numberOfGuesses += 1;
 		if (guess - number > 10) {
 			System.out.println("Way too high!");
 			return false;
