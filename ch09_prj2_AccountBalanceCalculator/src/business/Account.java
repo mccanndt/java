@@ -1,3 +1,4 @@
+package business;
 
 public class Account implements Balanceable, Depositable, Withdrawable {
 	// Instance variables

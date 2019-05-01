@@ -1,8 +1,9 @@
+package business;
 
 public class SavingsAccount extends Account {
 	// Instance Variable
-	double monthlyInterestRate;
-	double monthlyInterestPayment;
+	private double monthlyInterestRate;
+	private double monthlyInterestPayment;
 
 	// Contructor
 	public SavingsAccount(double balance, double monthlyInterestRate) {

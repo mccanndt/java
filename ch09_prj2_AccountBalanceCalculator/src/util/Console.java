@@ -1,3 +1,4 @@
+package util;
 import java.util.Scanner;
 
 public class Console {
@@ -19,15 +20,15 @@ public class Console {
 		return s;
 	}
 
-	public static String getString(String prompt, String yes, String no) {
+	public static String getString(String prompt, String s1, String s2) {
 		String s = "";
 		boolean isValid = false;
 		while (!isValid) {
 			s = getString(prompt);
-			if (s.equalsIgnoreCase(yes) || s.equalsIgnoreCase(no)) {
+			if (s.equalsIgnoreCase(s1) || s.equalsIgnoreCase(s2)) {
 				isValid = true;
 			} else {
-				System.out.println("Error! This entry must be '" + yes + "' or '" + no + "'.");
+				System.out.println("Error! This entry must be '" + s1 + "' or '" + s2 + "'.");
 			}
 		}
 		return s;

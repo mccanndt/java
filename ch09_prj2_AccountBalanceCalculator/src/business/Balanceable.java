@@ -1,3 +1,4 @@
+package business;
 
 public interface Balanceable {
 	double getBalance();

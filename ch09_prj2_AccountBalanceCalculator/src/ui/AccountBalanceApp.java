@@ -1,4 +1,10 @@
+package ui;
 import java.text.NumberFormat;
+
+import business.Account;
+import business.CheckingAccount;
+import business.SavingsAccount;
+import util.Console;
 
 public class AccountBalanceApp {
 
@@ -12,7 +18,8 @@ public class AccountBalanceApp {
 	public static void main(String[] args) {
 		// Display welcome messages
 		System.out.println("Welcome to the Account application\n");
-		startingBalances();
+		System.out.println("Starting Balances");
+		displayBalances();
 		System.out.println("\nEnter the transactions for the month");
 
 		// Start of transactions loop
@@ -20,7 +27,7 @@ public class AccountBalanceApp {
 		while (choice.equalsIgnoreCase("y")) {
 			String wd = Console.getString("\nWithdrawal or deposit? (w/d): ", "w", "d");
 			String cs = Console.getString("Checking or savings? (c/s): ", "c", "s");
-			double amount = Console.getDouble("Amount?: ");
+			double amount = Console.getDouble("Amount?: ", 0, Double.POSITIVE_INFINITY);
 
 			doTransaction(wd, cs, amount);
 
@@ -32,34 +39,28 @@ public class AccountBalanceApp {
 
 		// Display results
 		displayPaymentsFees();
-		displayFinalBalances();
+		System.out.println("\nFinal Balances");
+		displayBalances();
 	}
 
-	public static void startingBalances() {
-		System.out.println("Starting Balances");
+	public static void displayBalances() {
 		System.out.println("Checking: " + currency.format(ca.getBalance()));
 		System.out.println("Savings:  " + currency.format(sa.getBalance()));
 	}
 
 	public static void doTransaction(String wd, String cs, double amount) {
+		
+		Account a;
+		if (cs.equalsIgnoreCase("c")) {
+			a = ca;
+		} else {
+			a = sa;
+		}
+		
 		if (wd.equalsIgnoreCase("w")) {
-			// Withdraw chosen
-			if (cs.equalsIgnoreCase("c")) {
-				// Checking chosen
-				ca.withdraw(amount);
-			} else if (cs.equalsIgnoreCase("s")) {
-				// Savings chosen
-				sa.withdraw(amount);
-			}
-		} else if (wd.equalsIgnoreCase("d")) {
-			// Deposit chosen
-			if (cs.equalsIgnoreCase("c")) {
-				// Checking chosen
-				ca.deposit(amount);
-			} else if (cs.equalsIgnoreCase("s")) {
-				// Savings chosen
-				sa.deposit(amount);
-			}
+			a.withdraw(amount);
+		} else {
+			a.deposit(amount);
 		}
 	}
 
@@ -67,11 +68,5 @@ public class AccountBalanceApp {
 		System.out.println("\nMonthly Payments and Fees");
 		System.out.println("Checking fee:             " + currency.format(ca.getMonthlyFee()));
 		System.out.println("Savings interest payment: " + currency.format(sa.getMonthlyInterestPayment()));
-	}
-
-	public static void displayFinalBalances() {
-		System.out.println("\nFinal Balances");
-		System.out.println("Checking: " + currency.format(ca.getBalance()));
-		System.out.println("Savings:  " + currency.format(sa.getBalance()));
 	}
 }

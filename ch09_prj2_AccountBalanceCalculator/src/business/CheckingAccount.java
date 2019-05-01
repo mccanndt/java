@@ -1,3 +1,4 @@
+package business;
 
 public class CheckingAccount extends Account {
 	// Instance variables
@@ -12,10 +13,6 @@ public class CheckingAccount extends Account {
 	// Getters / Setters
 	public double getMonthlyFee() {
 		return monthlyFee;
-	}
-
-	public void setMonthlyFee(double monthlyFee) {
-		this.monthlyFee = monthlyFee;
 	}
 
 	// Methods
