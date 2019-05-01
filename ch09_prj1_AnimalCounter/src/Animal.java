@@ -1,8 +1,12 @@
 
 public abstract class Animal implements Countable {
 	// Instance Variables
-	static int count;
-	
+	private static int count;
+
+	public static void setCount(int count) {
+		Animal.count = count;
+	}
+
 	// Countable methods
 	@Override
 	public void incrementCount() {

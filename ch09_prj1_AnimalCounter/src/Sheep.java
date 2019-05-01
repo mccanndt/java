@@ -1,6 +1,6 @@
 
 public class Sheep extends Animal implements Cloneable {
-	//Instance variable
+	// Instance variable
 	String name;
 
 	// Constructor
@@ -20,7 +20,7 @@ public class Sheep extends Animal implements Cloneable {
 	@Override
 	public String getCountString() {
 		// TODO Auto-generated method stub
-		return count + " " + name;
+		return getCount() + " " + name;
 	}
 
 	@Override
@@ -28,6 +28,5 @@ public class Sheep extends Animal implements Cloneable {
 		// TODO Auto-generated method stub
 		return super.clone();
 	}
-	
-	
+
 }
