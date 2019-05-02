@@ -22,7 +22,8 @@ public class BattingStatisticsApp {
 			System.out.println("\n0 = out, 1 = single, 2 = double, 3 = triple, 4 = home run");
 			int[] results = new int[totalBats];
 			for (int i = 0; i < results.length; i++) {
-				results[i] = Console.getInt("Result for at-bat " + i + ": ", -1, 5);
+				int j = i + 1;
+				results[i] = Console.getInt("Result for at-bat " + j + ": ", -1, 5);
 			}
 
 			// Calculate results
