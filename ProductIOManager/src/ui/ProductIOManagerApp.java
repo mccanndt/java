@@ -4,13 +4,13 @@ import java.util.List;
 
 import business.Product;
 import db.DAO;
-import db.ProductTextFile;
+import db.ProductDB;
 import util.Console;
 import util.StringUtils;
 
 public class ProductIOManagerApp {
 
-	private static DAO<Product> productDAO = new ProductTextFile();
+	private static DAO<Product> productDAO = new ProductDB();
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Product Manager - Text File Edition\n");
@@ -30,7 +30,7 @@ public class ProductIOManagerApp {
 				deleteProduct();
 			} else if (action.equalsIgnoreCase("help")) {
 				displayMenu();
-			} else {
+			} else if (!action.equalsIgnoreCase("exit")){
 				System.out.println("Error! Not a valid command.\n");
 			}
 		}
@@ -53,7 +53,7 @@ public class ProductIOManagerApp {
 		List<Product> products = productDAO.getAll();
 		StringBuilder sb = new StringBuilder();
 		for (Product p : products) {
-			sb.append(StringUtils.padWithSpaces(p.getCode(), 8));
+			sb.append(StringUtils.padWithSpaces(p.getCode(), 12));
 			sb.append(StringUtils.padWithSpaces(p.getDescription(), 40));
 			sb.append(p.getPrice());
 			sb.append("\n");
