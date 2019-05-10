@@ -74,18 +74,15 @@ public class PRS_JDBC_App {
 		String lastName = Console.getString("Enter last name: ");
 		String phoneNumber = Console.getString("Enter phone number: ");
 		String email = Console.getString("Enter email: ");
-		boolean isReviewer;
+		boolean isReviewer = false;
 		if(Console.getString("Is the user a reviewer? (y/n): ", "y", "n").equalsIgnoreCase("y")) {
 			isReviewer = true;
-		} else {
-			isReviewer = false;
 		}
-		boolean isAdmin;
+		
+		boolean isAdmin = false;
 		if(Console.getString("Is the user an admin? (y/n): ", "y", "n").equalsIgnoreCase("y")) {
 			isAdmin = true;
-		} else {
-			isAdmin = false;
-		} 
+		}
 
 		User u = new User(userName, password, firstName, lastName, phoneNumber, email, isReviewer, isAdmin);
 		if (userDAO.add(u)) {
