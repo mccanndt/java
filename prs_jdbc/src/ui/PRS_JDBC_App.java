@@ -60,6 +60,8 @@ public class PRS_JDBC_App {
 			sb.append(StringUtils.padWithSpaces(u.getUserName(), 22));
 			sb.append(StringUtils.padWithSpaces(u.getFirstName(), 22));
 			sb.append(StringUtils.padWithSpaces(u.getLastName(), 22));
+			sb.append(StringUtils.padWithSpaces(Boolean.toString(u.isReviewer()), 8));
+			sb.append(StringUtils.padWithSpaces(Boolean.toString(u.isAdmin()), 8));
 			sb.append("\n");
 		}
 		System.out.println(sb.toString());
