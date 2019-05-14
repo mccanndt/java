@@ -57,7 +57,9 @@ public class LambdaDemoApp {
 		for (Contact c : contactsWithoutEmail) {
 			System.out.println(c);
 		}
-
+		
+		System.out.println("\n----------------Streams----------------\n");
+		
 		System.out.println("Bye!");
 	}
 
