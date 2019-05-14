@@ -6,7 +6,6 @@ import java.util.function.Predicate;
 
 public class MovieCollection {
 	private List<Movie> movies;
-	
 
 	public MovieCollection() {
 		movies = new ArrayList<>();
@@ -15,7 +14,7 @@ public class MovieCollection {
 	public void add(Movie movie) {
 		movies.add(movie);
 	}
-	
+
 	public List<Movie> getMovies() {
 		return movies;
 	}
@@ -31,24 +30,18 @@ public class MovieCollection {
 	}
 
 	public double getLowestRating() {
-		return movies.stream()
-				.map(Movie::getRating)
-				.reduce(5.0, Math::min);
+		return movies.stream().map(Movie::getRating).reduce(5.0, Math::min);
 	}
 
 	public double getHighestRating() {
-		return movies.stream()
-				.map(Movie::getRating)
-				.reduce(0.0, Math::max);
+		return movies.stream().map(Movie::getRating).reduce(0.0, Math::max);
 	}
 
 	public double getAverageRating() {
-		double sum = movies.stream()
-				.map(Movie::getRating)
-				.reduce(0.0, (a, b) -> a + b);
+		double sum = movies.stream().map(Movie::getRating).reduce(0.0, (a, b) -> a + b);
 		return sum / getSize();
 	}
-	
+
 	public int getSize() {
 		return movies.size();
 	}
